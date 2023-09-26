@@ -93,3 +93,36 @@ test('should place a ship of length 2 vertically to the end of the column', () =
                 [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0]]);
 });
+test('should place 2 different ships', () => {
+    const board = new gameBoard();
+    board.placeTheShip(9, 3, 2, 'Y');
+    board.placeTheShip(2, 3, 4, 'X');
+
+    expect(board.cleanBoard).toEqual(
+               [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 'S', 'S', 'S', 'S', 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0]]);
+});
+test('should place a ship that goes beyond the gameboard', () => {
+    const board = new gameBoard();
+    board.placeTheShip(2, 7, 4, 'Y');
+
+    expect(board.cleanBoard).toEqual(
+               [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 'S', 'S', 'S', 'S'],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
+});
