@@ -20,14 +20,14 @@ class gameBoard{
     }
     placeTheShip(yCoordinate, xCoordinate, shipLength, orientation) {       
         if (orientation === 'X') {
-            let helpCoordinate = (xCoordinate === 9) ? xCoordinate - shipLength + 1 : xCoordinate
-            let helpIterator =(xCoordinate === 9) ? xCoordinate + 1 : xCoordinate + shipLength
+            let helpCoordinate = (xCoordinate + shipLength >= 9) ? 10 - shipLength : xCoordinate
+            let helpIterator =(xCoordinate + shipLength >= 9) ? 10 : xCoordinate + shipLength
             for (let i = helpCoordinate; i < helpIterator; i++) {
               this.cleanBoard[yCoordinate][i] = 'S';
             }
           } else if (orientation === 'Y') {
-            let helpCoordinate = (yCoordinate === 9) ? yCoordinate - shipLength + 1 : yCoordinate
-            let helpIterator =(yCoordinate === 9) ? yCoordinate + 1 : yCoordinate + shipLength
+            let helpCoordinate = (yCoordinate + shipLength >= 9) ? 10 - shipLength : yCoordinate
+            let helpIterator =(yCoordinate + shipLength >= 9) ? 10 : yCoordinate + shipLength
             for (let i = helpCoordinate; i < helpIterator; i++) {
               this.cleanBoard[i][xCoordinate] = 'S';
             }
