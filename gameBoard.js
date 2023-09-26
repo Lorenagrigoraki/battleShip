@@ -27,7 +27,9 @@ class gameBoard{
               this.cleanBoard[yCoordinate][i] = 'S';
             }
           } else if (orientation === 'Y') {
-            for (let i = yCoordinate; i < yCoordinate + shipLength; i++) {
+            let helpCoordinate = (yCoordinate === 9) ? yCoordinate - shipLength + 1 : yCoordinate
+            let helpIterator =(yCoordinate === 9) ? yCoordinate + 1 : yCoordinate + shipLength
+            for (let i = helpCoordinate; i < helpIterator; i++) {
               this.cleanBoard[i][xCoordinate] = 'S';
             }
           }
