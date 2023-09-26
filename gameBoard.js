@@ -18,8 +18,7 @@ class gameBoard{
     shipship(len){
         return new ship(len)
     }
-    placeTheShip(yCoordinate, xCoordinate, shipLength, orientation) {
-       
+    placeTheShip(yCoordinate, xCoordinate, shipLength, orientation) {       
         if (orientation === 'X') {
             let helpCoordinate = (xCoordinate === 9) ? xCoordinate - shipLength + 1 : xCoordinate
             let helpIterator =(xCoordinate === 9) ? xCoordinate + 1 : xCoordinate + shipLength
