@@ -110,7 +110,7 @@ test('should place 2 different ships', () => {
                 [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0]]);
 });
-test('should place a ship that goes beyond the gameboard', () => {
+test('should place a ship that goes beyond the gameboard X orientation', () => {
     const board = new gameBoard();
     board.placeTheShip(2, 7, 4, 'X');
 
@@ -125,4 +125,20 @@ test('should place a ship that goes beyond the gameboard', () => {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
+});
+test('should place a ship that goes beyond the gameboard Y orientation', () => {
+    const board = new gameBoard();
+    board.placeTheShip(8, 1, 4, 'Y');
+
+    expect(board.cleanBoard).toEqual(
+               [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 'S', 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 'S', 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 'S', 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 'S', 0, 0, 0, 0, 0, 0, 0, 0]]);
 });
