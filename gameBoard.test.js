@@ -112,7 +112,7 @@ test('should place 2 different ships', () => {
 });
 test('should place a ship that goes beyond the gameboard', () => {
     const board = new gameBoard();
-    board.placeTheShip(2, 7, 4, 'Y');
+    board.placeTheShip(2, 7, 4, 'X');
 
     expect(board.cleanBoard).toEqual(
                [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
