@@ -77,3 +77,19 @@ test('should place a ship of length 3 horizontally to the end of the row', () =>
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
 });
+test('should place a ship of length 2 vertically to the end of the column', () => {
+    const board = new gameBoard();
+    board.placeTheShip(9, 3, 2, 'Y');
+
+    expect(board.cleanBoard).toEqual(
+               [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 'S', 0, 0, 0, 0, 0, 0]]);
+});
