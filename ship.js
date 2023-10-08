@@ -6,7 +6,12 @@ class ship{
         this.sunk = false
     }
     hit(){
-        this.demageHit +=1
+        if(this.isSunk()){
+            return 'The ship is alread sunk!'
+        }else{
+            this.demageHit +=1
+            this.isSunk()
+        }  
     }
     isSunk(){
         if(this.demageHit === this.shipLength){
