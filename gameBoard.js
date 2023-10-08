@@ -17,7 +17,7 @@ class gameBoard {
   }
   shipship(len) {
     let thisShips = this.ships
-    let newIdForNewShip = thisShips.length 
+    let newIdForNewShip = thisShips.length
     let newShip = new ship(len, newIdForNewShip)
     thisShips.push(newShip)
     return newShip
@@ -27,36 +27,46 @@ class gameBoard {
     if (orientation === 'X') {
       let helpCoordinate = (xCoordinate + shipLength >= 9) ? 10 - shipLength : xCoordinate
       let helpIterator = (xCoordinate + shipLength >= 9) ? 10 : xCoordinate + shipLength
-      let subArray = this.cleanBoard[yCoordinate].splice(helpCoordinate, helpIterator - helpCoordinate)
-      for (let i = helpCoordinate; i < helpIterator; i++) {
-        this.cleanBoard[yCoordinate][i] = thisNewShip;
+      let subArray = this.cleanBoard[yCoordinate].slice(helpCoordinate, helpIterator)
+      if (subArray.some(el => el !== 0)) {
+        return 'You can not place the ship here!'
+      } else {
+        for (let i = helpCoordinate; i < helpIterator; i++) {
+          this.cleanBoard[yCoordinate][i] = thisNewShip;
+        }
       }
     } else if (orientation === 'Y') {
       let helpCoordinate = (yCoordinate + shipLength >= 9) ? 10 - shipLength : yCoordinate
       let helpIterator = (yCoordinate + shipLength >= 9) ? 10 : yCoordinate + shipLength
+      let subArray = []
       for (let i = helpCoordinate; i < helpIterator; i++) {
-        this.cleanBoard[i][xCoordinate] = thisNewShip;
+        subArray.push(this.cleanBoard[i][xCoordinate])
+      }
+      if (subArray.some(el => el !== 0)) {
+        return 'You can not place the ship here!'
+      } else {
+        for (let i = helpCoordinate; i < helpIterator; i++) {
+          this.cleanBoard[i][xCoordinate] = thisNewShip;
+        }
       }
     }
-    // return this.cleanBoard
-    return subArray
+    return this.cleanBoard
   }
-  receiveAttack(yCoordinate, xCoordinate){
+  receiveAttack(yCoordinate, xCoordinate) {
     let board = this.cleanBoard
-    if(board[yCoordinate][xCoordinate] !== 0){
+    if (board[yCoordinate][xCoordinate] !== 0) {
       const idOfShip = board[yCoordinate][xCoordinate].id
       const hitShip = this.ships[idOfShip]
       hitShip.hit()
       return board
-    }else{
+    } else {
       return 'You miss a shot!'
     }
   }
 }
 
-let b = new gameBoard()
-b.placeTheShip(8, 1, 4, 'Y');
-b.placeTheShip(3, 2, 2, 'X');
-console.log(b.cleanBoard[3][2])
+// let b = new gameBoard()
+// b.placeTheShip(1, 3, 3, 'X');
+// console.log(b.placeTheShip(1, 5, 3, 'Y'))
 
 module.exports = gameBoard
