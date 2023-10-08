@@ -58,6 +58,9 @@ class gameBoard {
       const idOfShip = board[yCoordinate][xCoordinate].id
       const hitShip = this.ships[idOfShip]
       hitShip.hit()
+      if(this.ships.every(el => el.sunk === true)){
+        return 'All ships are sunk!'
+      }
       return board
     } else {
       return 'You miss a shot!'
@@ -66,6 +69,7 @@ class gameBoard {
 }
 
 // let b = new gameBoard()
+
 // b.placeTheShip(1, 3, 3, 'X');
 // console.log(b.placeTheShip(1, 5, 3, 'Y'))
 
