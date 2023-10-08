@@ -27,6 +27,7 @@ class gameBoard {
     if (orientation === 'X') {
       let helpCoordinate = (xCoordinate + shipLength >= 9) ? 10 - shipLength : xCoordinate
       let helpIterator = (xCoordinate + shipLength >= 9) ? 10 : xCoordinate + shipLength
+      let subArray = this.cleanBoard[yCoordinate].splice(helpCoordinate, helpIterator - helpCoordinate)
       for (let i = helpCoordinate; i < helpIterator; i++) {
         this.cleanBoard[yCoordinate][i] = thisNewShip;
       }
@@ -37,7 +38,8 @@ class gameBoard {
         this.cleanBoard[i][xCoordinate] = thisNewShip;
       }
     }
-    return this.cleanBoard
+    // return this.cleanBoard
+    return subArray
   }
   receiveAttack(yCoordinate, xCoordinate){
     let board = this.cleanBoard
