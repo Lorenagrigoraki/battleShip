@@ -176,7 +176,7 @@ test('Test if the gameboard class is returning the board', () => {
 //     });
 // });
 
-//Rabotaet!
+//Poke ne Rabotaet!
 test('should place a ship object to the board and add a ship to this.ships', () => {
     const board = new gameBoard();
     board.placeTheShip(8, 1, 4, 'Y');
@@ -218,5 +218,26 @@ test('should determines if this ship is hit', () => {
         [0, { shipLength: 4, id: 0, demageHit: 0, sunk: false }, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, { shipLength: 4, id: 0, demageHit: 0, sunk: false }, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, { shipLength: 4, id: 0, demageHit: 0, sunk: false }, 0, 0, 0, 0, 0, 0, 0, 0]]);
+});
+test('should determines if this ship is hit', () => {
+    const board = new gameBoard();
+    board.placeTheShip(3, 2, 4, 'X')
+
+    expect(board.placeTheShip(4, 3, 4, 'X')).toEqual([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, { shipLength: 4, id: 0, demageHit: 0, sunk: false }, { shipLength: 4, id: 0, demageHit: 0, sunk: false }, { shipLength: 4, id: 0, demageHit: 0, sunk: false }, { shipLength: 4, id: 0, demageHit: 0, sunk: false }, 0, 0, 0, 0],
+        [0, 0, 0, { shipLength: 4, id: 1, demageHit: 0, sunk: false }, { shipLength: 4, id: 1, demageHit: 0, sunk: false }, { shipLength: 4, id: 1, demageHit: 0, sunk: false }, { shipLength: 4, id: 1, demageHit: 0, sunk: false }, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]);
+});
+test('should checks if its possible to place the ship in Y direction', () => {
+    const board = new gameBoard();
+    board.placeTheShip(1, 3, 3, 'X')
+
+    expect(board.placeTheShip(1, 5, 3, 'Y')).toEqual('You can not place the ship here!');
 });
 
